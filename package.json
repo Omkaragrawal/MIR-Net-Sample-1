@@ -1,0 +1,38 @@
+{
+  "name": "mirnet-example",
+  "version": "0.0.0",
+  "description": "This is an example app for the use of MIR-NET model",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rishit-dagli/MIRNet-TFJS/tree/example"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs-node": "2.7.0",
+    "compression": "1.7.4",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "formidable": "1.2.2",
+    "helmet": "4.2.0",
+    "morgan": "~1.9.1"
+  },
+  "keywords": [
+    "MIR_NET",
+    "mirnet",
+    "MIR-NET-EXAMPLE",
+    "mir-net",
+    "mir-net-example"
+  ],
+  "author": "OMKAR AGRAWAL <omkar3654@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "8.2.0",
+    "nodemon": "2.0.6"
+  }
+}
