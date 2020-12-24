@@ -20,7 +20,8 @@
     "express": "~4.16.1",
     "formidable": "1.2.2",
     "helmet": "4.2.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "sharp": "^0.27.0"
   },
   "keywords": [
     "MIR_NET",
@@ -33,6 +34,7 @@
   "license": "MIT",
   "devDependencies": {
     "dotenv": "8.2.0",
+    "image-js": "^0.31.3",
     "nodemon": "2.0.6"
   }
 }
