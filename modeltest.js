@@ -1,6 +1,8 @@
 const tf = require('@tensorflow/tfjs-node');
 // const tf = require('@tensorflow/tfjs-node-gpu');
 const fs = require('fs');
+const sharp = require('sharp');
+
 let mirNetModel;
 let modelInfo;
 const imageSize = 512;
@@ -36,8 +38,8 @@ const predict = async () => {
 
         // image = new Uint8Array(image);
         // Decode the image into a tensor.
-        let img = sharp("Capture.PNG").removeAlpha().resize({ width: 512, height: 512, fit: "contain", }).png().toBuffer();
-        img = new Uint8Array.from(img);
+        let img = await sharp("Capture.PNG").removeAlpha().resize({ width: 512, height: 512, fit: "contain", }).png().toBuffer();
+        img = Uint8Array.from(img);
         let imageTensor = await tf.node.decodePng(img, 3);
         // imageTensor = tf.image.resizeBilinear(imageTensor, size = [imageSize, imageSize])
         console.log("after img 2 tensor");

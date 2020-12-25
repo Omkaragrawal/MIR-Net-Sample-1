@@ -57,8 +57,8 @@ const predict = async (imgPath, responseImagePath) => {
 
     // image = new Uint8Array(image);
     // Decode the image into a tensor.
-    let img = sharp(imgPath).removeAlpha().resize({ width: 512, height: 512, fit: "contain", }).png().toBuffer();
-    img = new Uint8Array.from(img);
+    let img = await sharp("Capture.PNG").removeAlpha().resize({ width: 512, height: 512, fit: "contain", }).png().toBuffer();
+    img = Uint8Array.from(img);
     let imageTensor = await tf.node.decodePng(img, 3);
     // imageTensor = tf.image.resizeBilinear(imageTensor, size = [imageSize, imageSize])
     console.log("after img 2 tensor");
@@ -87,12 +87,12 @@ const predict = async (imgPath, responseImagePath) => {
     outputTensor = await tf.node.encodePng(outputTensor);
 
     fs.writeFileSync(responseImagePath, outputTensor);
-    return(outputTensor, true);
+    return (outputTensor, true);
 
-} catch (error) {
+  } catch (error) {
     console.log(error);
     throw error;
-}
+  }
 };
 const formOptions = {
   // uploadDir: path.join(__dirname, "uploads"),
@@ -116,7 +116,7 @@ app.post('/submit', (req, res) => {
       // res.sendFile(files.image.path);
       try {
         let toSend = await predict(files.image.path, path.join(__dirname, "public", "responseImages") + files.image.name);
-        if(toSend === true) {
+        if (toSend === true) {
           res.sendFile(path.join(__dirname, "public", "responseImages") + files.image.name);
         } else {
           res.status(501).send(toSend);
